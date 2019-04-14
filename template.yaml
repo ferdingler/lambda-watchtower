@@ -53,6 +53,6 @@ Resources:
                     }
                   ],
                   "namespace": "${CloudWatchNamespace}",
-                  "timings": ["readable", "total"],
+                  "timings": ["readable", "total", "lookup", "secureConnect", "close", "connect"],
                   "timeout": ${Timeout}
                 }
