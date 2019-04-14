@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: lambda-watchtower
+Globals:
+  Function:
+    Timeout: 30
+
+Parameters:
+  TargetUrl:
+    Type: String
+    Default: https://www.aws.amazon.com
+  TargetName:
+    Type: String
+  CloudWatchNamespace:
+    Type: String
+    Default: Watchtower
+  Timeout:
+    Type: Number
+    Default: 2000
+  Frequency:
+    Type: String
+    Default: rate(1 minute)
+    AllowedValues:
+      - rate(1 minute)
+      - rate(5 minutes)
+
+Resources:
+  WatchTowerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: index.handler
+      Runtime: nodejs8.10
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - cloudwatch:PutMetricData
+              Resource: '*'
+      Events:
+        Cron:
+          Type: Schedule
+          Properties:
+            Schedule: rate(1 minute)
+            Input: 
+              !Sub |
+                {
+                  "targets": [
+                    {
+                      "url": "${TargetUrl}",
+                      "name": "${TargetName}"
+                    }
+                  ],
+                  "namespace": "${CloudWatchNamespace}",
+                  "timings": ["readable", "total"],
+                  "timeout": ${Timeout}
+                }

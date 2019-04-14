@@ -1,0 +1,12 @@
+
+{
+    "targets": [
+    {
+      "url": "https://aws.amazon.com",
+      "name": "AWS Website"
+    }
+  ],
+  "namespace": "Watchtower",
+  "timings": ["readable", "total"],
+  "timeout": 10000
+}

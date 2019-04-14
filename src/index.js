@@ -62,9 +62,12 @@ const handlers = {}
  * 
  * @returns {Promise} - Promise that resolves if all checks were successful and data was stored in CloudWatch
  */
-exports.handler = function(event, context, callback) {
-    const targets = event.targets
-    if (!targets) callback("No targets given")
+exports.handler = (event, context, callback) => {
+    console.log('Event=', JSON.stringify(event));
+    const targets = event.targets;
+    if (!targets) {
+        callback("No targets given");
+    }
 
     const requests = targets.map(target => new Promise((resolve, reject) => {
         const data = {
