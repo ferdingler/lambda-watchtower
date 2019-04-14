@@ -1,7 +1,7 @@
 {
-  "name": "lambda-watchtower",
+  "name": "serverless-uptime-monitor",
   "version": "1.0.0",
-  "description": "Check endpoint availability and response time on AWS Lambda",
+  "description": "Monitors an HTTP endpoint's availability with AWS Lambda and CloudWatch",
   "main": "index.js",
   "dependencies": {
     "aws-sdk": "^2.275.1"
@@ -14,12 +14,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wmnnd/lambda-watchtower.git"
+    "url": "https://github.com/ferdingler/lambda-watchtower"
   },
-  "author": "Philipp Schmieder",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/wmnnd/lambda-watchtower/issues"
-  },
-  "homepage": "https://github.com/wmnnd/lambda-watchtower#readme"
+  "author": "Fernando Dingler",
+  "license": "MIT"
 }

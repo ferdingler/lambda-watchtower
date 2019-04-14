@@ -1,6 +1,9 @@
 # Serverless Uptime Monitor
 Script for monitoring one or several HTTP(S) endpoints with AWS Lambda. Logs are stored as AWS CloudWatch metrics.
 
+## Setup
+
+
 ## Parameters
 - `TargetUrl`: Target HTTP or HTTPS endpoint to monitor.
 - `TargetName`: Name of the target, metrics will show up under this name in CloudWatch.
@@ -18,5 +21,5 @@ The following metrics will be captured in CloudWatch:
 - `close`: Time between first byte and the end of the request
 - `total`: Total time from the beginning to the end of the request
 
-# License
+## License
 This code is available under the MIT license. See the `LICENSE` file.
