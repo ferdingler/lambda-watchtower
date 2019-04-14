@@ -2,7 +2,8 @@
 Script for monitoring one or several HTTP(S) endpoints with AWS Lambda. Logs are stored as AWS CloudWatch metrics.
 
 ## Setup
-
+Deploy in your AWS account using the Serverless Application Repository: 
+https://serverlessrepo.aws.amazon.com/applications/arn:aws:serverlessrepo:us-east-1:962675440091:applications~serverless-uptime-monitor
 
 ## Parameters
 - `TargetUrl`: Target HTTP or HTTPS endpoint to monitor.

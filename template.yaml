@@ -7,9 +7,9 @@ Metadata:
     Description: Monitors an HTTP endpoint's availability with AWS Lambda and CloudWatch
     Author: Fernando Dingler
     SpdxLicenseId: MIT
-    LicenseUrl: LICENSE.txt
+    LicenseUrl: LICENSE
     ReadmeUrl: README.md
-    Labels: ['uptime', 'monitoring', 'http', 'ping', 'website monitoring', 'availability', 'status']
+    Labels: ['uptime', 'monitoring', 'http', 'ping', 'website', 'availability', 'status']
     HomePageUrl: https://github.com/ferdingler/lambda-watchtower
     SemanticVersion: 1.0.0
     SourceCodeUrl: https://github.com/ferdingler/lambda-watchtower
