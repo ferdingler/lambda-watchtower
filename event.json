@@ -7,6 +7,6 @@
     }
   ],
   "namespace": "Watchtower",
-  "timings": ["readable", "total"],
+  "timings": ["readable", "total", "connect", "close", "lookup", "secureConnect"],
   "timeout": 10000
 }
