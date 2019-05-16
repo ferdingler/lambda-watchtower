@@ -1,9 +1,8 @@
 const https = require("https");
 const http = require("http");
-const net = require("net");
 const { hrtime } = process;
 const AWS = require("aws-sdk");
-const cloudwatch = new AWS.CloudWatch();
+const cloudWatch = new AWS.CloudWatch();
 
 const hrToMs = (timing) => Math.round(timing[0] * 1000 + timing[1] / 1000000);
 const hrDiff = (start, end) => hrToMs(end) - hrToMs(start);
@@ -36,13 +35,13 @@ const sendData = (data, event) => Promise.all(
         }
         return acc;
     }, [])
-    .map(metricData => cloudwatch.putMetricData({
+    .map(metricData => cloudWatch.putMetricData({
         Namespace: event.namespace || "Watchtower",
         MetricData: metricData
     }).promise())
 );
 
-const handlers = {}
+const handlers = {};
 
 /**
  * Query HTTP(S) Endpoints and log timings and HTTP status with CloudWatch
@@ -70,7 +69,7 @@ exports.handler = async (event) => {
         const data = {
             name: target.name || target.url,
             timings: { start: hrtime() },
-        }
+        };
         handlers.http(target, data, event, resolve, reject);
     }));
     
@@ -80,14 +79,15 @@ exports.handler = async (event) => {
         const includedTimings = event.logTimings || ["readable", "total"];
         const metricData = results.map(result => {
             const timingMetrics = includedTimings.map(timing => {
+
                 return {
                     MetricName: `timing-${timing}`,
-                    Dimensions: [{Name: result.name, Value: `Timing: ${timing}`}],
+                    Dimensions: [{ Name: result.name, Value: `Timing: ${timing}` }],
                     Value: result.durations[timing],
                     Unit: "Milliseconds",
                     Timestamp: timestamp
                 };
-            })
+            });
             return [{
                 MetricName: "status",
                 Dimensions: [{ Name: result.name, Value: "HTTP Status" }],
